@@ -10,11 +10,14 @@
     <context:property-placeholder location="classpath:beans.properties"/>
 
     <bean id="animal"
-          class="org.example.entity.Cat">
+          class="org.example.entity.Cat"
+          scope="singleton">
+
     </bean>
 
     <bean id="person"
-          class="org.example.entity.Person">
+          class="org.example.entity.Person"
+          scope="singleton">
         <!--        <constructor-arg ref="animal"/>-->
         <property name="animal" ref="animal"/>
         <property name="name" value="${person.name}"/>
