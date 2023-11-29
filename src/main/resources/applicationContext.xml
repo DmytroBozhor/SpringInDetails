@@ -11,7 +11,7 @@
 
     <bean id="animal"
           class="org.example.entity.Cat"
-          scope="singleton">
+          scope="prototype">
 
     </bean>
 

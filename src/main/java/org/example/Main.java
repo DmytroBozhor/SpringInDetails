@@ -9,11 +9,10 @@ public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-//        singleton - meaning all the code will share the bean
-//        such beans are created as soon as the Spring context is instantiated and initialized
         Animal orangeCat = context.getBean("animal", Cat.class);
         Animal blackCat = context.getBean("animal", Cat.class);
 
+//        Now we will se false as output because we use prototype scope for animal bean
         System.out.println(orangeCat==blackCat);
 
         context.close();
