@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 @Component("personBean")
 public class Person {
+    @Autowired
+    @Qualifier("catBean")
     private Animal animal;
     private String name;
     private Integer age;
@@ -24,8 +26,8 @@ public class Person {
         return animal;
     }
 
-    @Autowired
-    @Qualifier("catBean")
+//    @Autowired
+//    @Qualifier("catBean")
     public void setAnimal(Animal animal) {
         System.out.println("Animal: Injection with setter!");
         this.animal = animal;
