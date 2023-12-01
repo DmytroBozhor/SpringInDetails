@@ -10,16 +10,22 @@ public class Person {
     private String name;
     private Integer age;
 
-    @Autowired
-    public Person(@Qualifier("catBean") Animal animal) {
+    public Person() {
         System.out.println("The person bean is created!");
-        this.animal = animal;
     }
+
+    //    @Autowired
+//    public Person(@Qualifier("catBean") Animal animal) {
+//        System.out.println("The person bean is created!");
+//        this.animal = animal;
+//    }
 
     public Animal getAnimal() {
         return animal;
     }
 
+    @Autowired
+    @Qualifier("catBean")
     public void setAnimal(Animal animal) {
         System.out.println("Animal: Injection with setter!");
         this.animal = animal;
