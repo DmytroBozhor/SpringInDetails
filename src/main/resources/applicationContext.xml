@@ -11,13 +11,14 @@
 
     <bean id="animal"
           class="org.example.entity.Cat"
-          scope="prototype">
+          init-method="init"
+          destroy-method="destroy">
 
     </bean>
 
     <bean id="person"
           class="org.example.entity.Person"
-          scope="singleton">
+          depends-on="animal">
         <!--        <constructor-arg ref="animal"/>-->
         <property name="animal" ref="animal"/>
         <property name="name" value="${person.name}"/>
