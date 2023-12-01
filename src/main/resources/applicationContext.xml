@@ -16,13 +16,12 @@
 <!--          destroy-method="destroy">-->
 <!--    </bean>-->
 
-    <bean id="person"
-          class="org.example.entity.Person"
-          depends-on="animal">
-        <!--        <constructor-arg ref="animal"/>-->
-        <property name="animal" ref="animal"/>
-        <property name="name" value="${person.name}"/>
-        <property name="age" value="${person.age}"/>
-    </bean>
+<!--    <bean id="person"-->
+<!--          class="org.example.entity.Person"-->
+<!--          depends-on="catBean">-->
+<!--        <constructor-arg name="animal" ref="catBean"/>-->
+<!--        <constructor-arg name="name" value="${person.name}"/>-->
+<!--        <constructor-arg name="age" value="${person.age}"/>-->
+<!--    </bean>-->
 
 </beans>

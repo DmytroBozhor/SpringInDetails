@@ -1,8 +1,9 @@
 package org.example.entity;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component()
+@Component("catBean")
 public class Cat implements Animal {
 
     public Cat() {
