@@ -8,13 +8,13 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:beans.properties"/>
+    <context:component-scan base-package="org.example"/>
 
-    <bean id="animal"
-          class="org.example.entity.Cat"
-          init-method="init"
-          destroy-method="destroy">
-
-    </bean>
+<!--    <bean id="animal"-->
+<!--          class="org.example.entity.Cat"-->
+<!--          init-method="init"-->
+<!--          destroy-method="destroy">-->
+<!--    </bean>-->
 
     <bean id="person"
           class="org.example.entity.Person"
