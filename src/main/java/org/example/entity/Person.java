@@ -2,32 +2,33 @@ package org.example.entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component("personBean")
+@PropertySource("classpath:beans.properties")
 public class Person {
-    @Autowired
-    @Qualifier("catBean")
     private Animal animal;
+    @Value("${person.name}")
     private String name;
+    @Value("${person.age}")
     private Integer age;
 
     public Person() {
         System.out.println("The person bean is created!");
     }
 
-    //    @Autowired
-//    public Person(@Qualifier("catBean") Animal animal) {
-//        System.out.println("The person bean is created!");
-//        this.animal = animal;
-//    }
+    @Autowired
+    public Person(@Qualifier("catBean") Animal animal) {
+        System.out.println("The person bean is created!");
+        this.animal = animal;
+    }
 
     public Animal getAnimal() {
         return animal;
     }
 
-//    @Autowired
-//    @Qualifier("catBean")
     public void setAnimal(Animal animal) {
         System.out.println("Animal: Injection with setter!");
         this.animal = animal;
