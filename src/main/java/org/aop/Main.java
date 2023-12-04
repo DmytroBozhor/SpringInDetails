@@ -8,8 +8,11 @@ public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeanConfiguration.class);
 
-        Library library = context.getBean("libraryBean", Library.class);
-        library.addBook();
+        Library uniLibrary = context.getBean("uniLibraryBean", Library.class);
+        uniLibrary.addBook();
+
+        Library schoolLibrary = context.getBean("schoolLibraryBean", Library.class);
+        schoolLibrary.addBook();
 
         context.close();
     }
