@@ -2,10 +2,7 @@ package org.aop.util.aspects;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -28,10 +25,22 @@ public class LoggingAspect {
         args.ifPresent(objects -> Arrays.asList(objects).forEach(System.out::println));
     }
 
-    @After("allAddMethodsPointcut()")
-    public void afterAddBookAdvice(JoinPoint joinPoint) {
+    @AfterReturning("allAddMethodsPointcut()")
+    public void afterReturningAddBookAdvice(JoinPoint joinPoint) {
         Signature signature = joinPoint.getSignature();
-        System.out.println("LoggingAspect :: afterAddBookAdvice :: methodInfo :: " + signature);
+        System.out.println("LoggingAspect :: afterReturningAddBookAdvice :: methodInfo :: " + signature);
     }
+
+    @AfterThrowing("allAddMethodsPointcut()")
+    public void afterThrowingAddBookAdvice() {
+        System.out.println("LoggingAspect :: afterThrowingAddBookAdvice :: methodInfo :: exception logging");
+    }
+
+    //This one will be executed in both cases
+//    @After("allAddMethodsPointcut()")
+//    public void afterAddBookAdvice(JoinPoint joinPoint) {
+//        Signature signature = joinPoint.getSignature();
+//        System.out.println("LoggingAspect :: afterAddBookAdvice :: methodInfo :: " + signature);
+//    }
 
 }

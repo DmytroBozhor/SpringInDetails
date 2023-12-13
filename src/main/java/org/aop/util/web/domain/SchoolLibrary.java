@@ -7,5 +7,6 @@ public class SchoolLibrary implements Library {
     @Override
     public void addBook() {
         System.out.println("Class: SchoolLibrary. Method: addBook()");
+        throw new RuntimeException();
     }
 }
