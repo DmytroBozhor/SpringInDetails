@@ -3,10 +3,15 @@ package org.aop.util.web.domain;
 import org.springframework.stereotype.Component;
 
 @Component("schoolLibraryBean")
-public class SchoolLibrary implements Library {
-    @Override
+public class SchoolLibrary {
+
+    private static final String schoolName = "High School Chouma";
+
     public void addBook() {
         System.out.println("Class: SchoolLibrary. Method: addBook()");
-        throw new RuntimeException();
+    }
+
+    public String getSchoolName() {
+        return schoolName;
     }
 }

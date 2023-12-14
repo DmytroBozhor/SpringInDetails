@@ -1,6 +1,7 @@
 package org.aop.util.aspects;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
@@ -31,9 +32,20 @@ public class LoggingAspect {
         System.out.println("LoggingAspect :: afterReturningAddBookAdvice :: methodInfo :: " + signature);
     }
 
-    @AfterThrowing("allAddMethodsPointcut()")
-    public void afterThrowingAddBookAdvice() {
-        System.out.println("LoggingAspect :: afterThrowingAddBookAdvice :: methodInfo :: exception logging");
+    @AfterThrowing(pointcut = "allAddMethodsPointcut()", throwing = "ex")
+    public void afterThrowingAddBookAdvice(Throwable ex) {
+        System.out.println("LoggingAspect :: afterThrowingAddBookAdvice :: methodInfo :: exception logging :: " + ex);
+    }
+
+    @Around("execution(public String getSchoolName())")
+    public String aroundAddMethodAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        String methodName = proceedingJoinPoint.getSignature().getName();
+        System.out.println("LoggingAspect :: afterReturningAddBookAdvice :: methodInfo :: " + methodName + " :: start");
+
+        String schoolName = (String) proceedingJoinPoint.proceed();
+
+        System.out.println("LoggingAspect :: afterReturningAddBookAdvice :: methodInfo :: " + methodName + " :: end");
+        return schoolName;
     }
 
     //This one will be executed in both cases

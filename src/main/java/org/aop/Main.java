@@ -2,6 +2,7 @@ package org.aop;
 
 import org.aop.util.config.BeanConfiguration;
 import org.aop.util.web.domain.Library;
+import org.aop.util.web.domain.SchoolLibrary;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
@@ -11,8 +12,10 @@ public class Main {
         Library uniLibrary = context.getBean("uniLibraryBean", Library.class);
         uniLibrary.addBook();
 
-        Library schoolLibrary = context.getBean("schoolLibraryBean", Library.class);
+        SchoolLibrary schoolLibrary = context.getBean("schoolLibraryBean", SchoolLibrary.class);
         schoolLibrary.addBook();
+
+        System.out.println(schoolLibrary.getSchoolName());
 
         context.close();
     }
